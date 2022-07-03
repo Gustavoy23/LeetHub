@@ -23,8 +23,7 @@ class Solution {
             dp[k] = 1;
             k++;
         }
-        
-        long count = delay;
+
         for(int i = delay; i < n; i++) { //3(Day 4)
             dp[i] = dp[i-1] % mod; 
             
@@ -36,15 +35,17 @@ class Solution {
             
             if(i - forget >= 0) {
             for(int j = i - forget ; j <= i-delay; j++) 
-                 awareF[i]+= awareF[j] % mod;
+                 awareF[i]+= ( awareF[j]) % mod;
     
                 dp[i] = (dp[i] + awareF[i]) % mod;
             } else {
             for(int j = 0; j <=  i-delay; j++) 
-                awareF[i]+= awareF[j] % mod;
+                awareF[i]+= ( awareF[j]) % mod;
           
                 dp[i] = (dp[i] + awareF[i]) % mod;
             }
+            
+            
             
 
         }
